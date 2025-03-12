@@ -4,6 +4,7 @@ import axiosInstance, { setAccessToken } from "../../api/axiosInstance";
 import UserValidate from "./UserValidate";
 import { Container, Form, Button, Card } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './SignUpForm.css'; // Подключаем стили
 
 export default function SignUpForm({setUser}) {
@@ -27,6 +28,7 @@ export default function SignUpForm({setUser}) {
       <Card
         className="shadow-lg rounded-4 p-4 sign-up-card"
         style={{ maxWidth: '400px', width: '100%' }}
+        >
         <h2 className="text-center mb-4">Регистрация</h2>
         <Form onSubmit={signUpHandler}>
           <div className="form-group">
