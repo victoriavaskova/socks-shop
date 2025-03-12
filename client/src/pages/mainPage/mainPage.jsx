@@ -1,7 +1,8 @@
-export default function RegPage() {
+import React from 'react'
+
+export default function mainPage() {
   return (
-    <div>
-      <SignUpForm setUser={setUser} />
-    </div>
-  );
+    <div>mainPage</div>
+  )
 }
+
