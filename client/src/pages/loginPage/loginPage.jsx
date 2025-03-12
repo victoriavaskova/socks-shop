@@ -3,10 +3,10 @@ import LoginForm from '../../features/LoginForm/LoginForm';
 
 
 
-export default function LoginPage() {
+export default function LoginPage({setUser}) {
     return (
       <>
-      <LoginForm />
+      <LoginForm setUser={setUser}/>
       </>
     );
   }

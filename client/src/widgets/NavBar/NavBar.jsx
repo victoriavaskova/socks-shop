@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import './NavBar.css';
 import logo from './logo.jpg';
 
-export default function NavBar() {
+export default function NavBar({logoutHandler, user}) {
   return (
     <nav className="navbar">
       
@@ -15,7 +15,7 @@ export default function NavBar() {
           <li><Link to="/login">ВХОД</Link></li>
         </ul>
       </div>
-
+<div>{user.status === "logged" ? `Привет ${user.data.name}` : "Guest"}</div>
       <div className="navbar-logo">
         <Link to="/">
           <img src={logo} alt="Логотип" />
@@ -24,6 +24,7 @@ export default function NavBar() {
 
       <div className="navbar-right">
         <ul className="navbar-links">
+            <li onClick={logoutHandler} >ВЫХОД</li>
           <li><Link to="/favorites">ИЗБРАННОЕ</Link></li>
           <li><Link to="/cart">КОРЗИНА</Link></li>
         </ul>
