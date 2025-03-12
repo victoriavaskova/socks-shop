@@ -3,6 +3,7 @@ import Layout from "./widgets/Layout/Layout";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
+import CreateSockPage from "./pages/createSockPage/createSockPage"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import axios from "axios";

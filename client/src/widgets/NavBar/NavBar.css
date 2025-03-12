@@ -11,24 +11,24 @@
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
-/* Логотип */
+
 .navbar-logo img {
-  height: 80px; /* Размер логотипа */
+  height: 80px; 
   width: auto;
   display: block;
 }
 
-/* Левый блок (регистрация и вход) */
+
 .navbar-left {
   display: flex;
 }
 
-/* Правый блок (избранное и корзина) */
+
 .navbar-right {
   display: flex;
 }
 
-/* Список ссылок */
+
 .navbar-links {
   list-style: none;
   display: flex;
@@ -41,23 +41,30 @@
   position: relative;
 }
 
-/* Ссылки */
+
 .navbar-links a {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
   padding: 10px 15px;
+  display: flex;
+  align-items: center; 
+  gap: 6px; 
   transition: all 0.3s ease-in-out;
 }
 
-/* Эффект при наведении */
+.navbar-links a svg {
+  font-size: 24px; 
+}
+
+
 .navbar-links a:hover {
   color: #000;
   background: #fff;
   border-radius: 5px;
 }
 
-/* Анимация подчеркивания */
+
 .navbar-links a::after {
   content: '';
   display: block;
