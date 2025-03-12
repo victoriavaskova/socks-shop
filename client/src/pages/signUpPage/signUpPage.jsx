@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function LoginPage() {
+import SignUpForm from '../../features/SignUpForm/SignUpForm';
+
+export default function SignUpPage() {
   return (
-    <div>
- SignUpPage
-    </div>
+    <>
+    <SignUpForm />
+    </>
+    
   );
 }
