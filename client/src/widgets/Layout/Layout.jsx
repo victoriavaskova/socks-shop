@@ -3,10 +3,10 @@ import NavBar from '../NavBar/NavBar'
 import { Outlet } from "react-router";
 
 
-export default function Layout() {
+export default function Layout({logoutHandler, user}) {
   return (
     <>
-          <NavBar />
+          <NavBar logoutHandler={logoutHandler} user={user}/>
           <Outlet />
     </>
   );

@@ -1,10 +1,27 @@
 import React from 'react';
+import axios from "axios";
+import axiosInstance, { setAccessToken } from "../../api/axiosInstance";
+
+
 import { Container, Form, Button, Card } from 'react-bootstrap';
-
 import InputGroup from 'react-bootstrap/InputGroup';
-import './LoginForm.css'; // Подключаем стили
+import './LoginForm.css'; 
 
-export default function LoginForm() {
+export default function LoginForm({setUser}) {
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target));
+    if (!formData.email || !formData.password) {
+      return alert("Missing required fields");
+    }
+    axiosInstance.post("/auth/login", formData).then((res) => {
+      setUser({ status: "logged", data: res.data.user });
+      setAccessToken(res.data.accessToken);
+    });
+  };
+
+
   return (
     <Container className="d-flex justify-content-center mt-5">
       <Card
@@ -12,7 +29,7 @@ export default function LoginForm() {
         style={{ maxWidth: '400px', width: '100%' }}
       >
         <h2 className="text-center mb-4">Войти</h2>
-        <Form>
+        <Form onSubmit={loginHandler}>
           <div className="form-group">
             <InputGroup className="mb-3">
               <InputGroup.Text id="inputGroup-sizing-default">Email</InputGroup.Text>
