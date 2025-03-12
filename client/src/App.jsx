@@ -3,6 +3,7 @@ import Layout from "./widgets/Layout/Layout";
 import MainPage from "./pages/mainPage/mainPage";
 import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 return (
