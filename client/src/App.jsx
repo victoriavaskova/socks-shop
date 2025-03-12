@@ -38,6 +38,8 @@ return (
   <Route path="/" element={<WelcomePage />} />
   <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
   <Route path="/login" element={<LoginPage setUser={setUser}/>} />
+  <Route path="/createsocks" element={<CreateSockPage/>} />
+
   </Route>
 
 
