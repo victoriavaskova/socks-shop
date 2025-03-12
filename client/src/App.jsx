@@ -1,9 +1,10 @@
-import { useState } from 'react'
+
 import { Routes, Route } from "react-router";
 import Layout from "./widgets/Layout/Layout";
 import MainPage from "./pages/MainPage/MainPage";
 import LoginPage from "./pages/loginPage/loginPage";
 import CreateSockPage from "./pages/createSockPage/createSockPage"
+
 
 function App() {
 const [user, setUser] = useState({ status: "logging", data: null });
