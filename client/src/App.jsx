@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./widgets/Layout/Layout";
-import MainPage from "./pages/mainPage/mainPage";
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
 
@@ -10,7 +10,7 @@ return (
 
 
   <Route path="/" element={<Layout />}>
-  <Route path="/" element={<MainPage />} />
+  <Route path="/" element={<WelcomePage />} />
   <Route path="/signup" element={<SignUpPage />} />
   <Route path="/login" element={<LoginPage />} />
   </Route>

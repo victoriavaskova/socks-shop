@@ -1,4 +1,3 @@
-
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -13,9 +12,20 @@
 }
 
 /* Логотип */
-.navbar-logo {
-  font-size: 24px;
-  letter-spacing: 2px;
+.navbar-logo img {
+  height: 80px; /* Размер логотипа */
+  width: auto;
+  display: block;
+}
+
+/* Левый блок (регистрация и вход) */
+.navbar-left {
+  display: flex;
+}
+
+/* Правый блок (избранное и корзина) */
+.navbar-right {
+  display: flex;
 }
 
 /* Список ссылок */
