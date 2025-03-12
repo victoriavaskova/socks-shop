@@ -3,6 +3,7 @@ import Layout from "./widgets/Layout/Layout";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
 import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
+import CreateSockPage from "./pages/createSockPage/createSockPage"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -14,6 +15,7 @@ return (
   <Route path="/" element={<WelcomePage />} />
   <Route path="/signup" element={<SignUpPage />} />
   <Route path="/login" element={<LoginPage />} />
+  <Route path="/createsocks" element={<CreateSockPage />} />
   </Route>
 
 

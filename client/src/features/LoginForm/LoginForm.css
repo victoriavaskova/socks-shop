@@ -1,0 +1,46 @@
+.login-card {
+    max-width: 400px;
+    width: 100%;
+    padding: 30px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group .input-group-text {
+    width: 120px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .form-group .form-control {
+    padding: 10px;
+    height: 40px; /* Установим высоту, чтобы все поля были одинакового размера */
+  }
+  
+  /* Выравнивание заголовков и полей */
+  .text-center {
+    text-align: center;
+  }
+  
+  .btn-submit {
+    width: 100%;
+    background-color: rgb(123, 206, 234);
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-submit:hover {
+    background-color: rgb(111, 168, 188);
+    cursor: pointer;
+  }
+  
