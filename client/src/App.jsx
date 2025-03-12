@@ -1,25 +1,24 @@
-
-import { Routes, Route } from "react-router";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./widgets/Layout/Layout";
-import MainPage from "./pages/MainPage/mainPage";
+import MainPage from "./pages/mainPage/mainPage";
+import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
-import CreateSockPage from "./pages/createSockPage/createSockPage"
-
 
 function App() {
-const [user, setUser] = useState({ status: "logging", data: null });
 return (
-  <>
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/createsock" element={<CreateSockPage />} />
-        // <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
-        <Route path="/login" element={<LoginPage setUser={setUser}/>} />
-        <Route path="*" element={<h1>No content</h1>} />
-      </Route>
-    </Routes>
-  </>
-);
+  <Routes>
+
+
+  <Route path="/" element={<Layout />}>
+  <Route path="/" element={<MainPage />} />
+  <Route path="/signup" element={<SignUpPage />} />
+  <Route path="/login" element={<LoginPage />} />
+  </Route>
+
+
+  <Route path="*" element={<>404</>} />
+</Routes>
+)
 }
+
 export default App
