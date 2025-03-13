@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import axios from "axios";
 import "./CreateSockForm.css";
 
 export default function CreateSockForm() {
@@ -7,20 +8,19 @@ export default function CreateSockForm() {
   const [pattern, setPattern] = useState("");
 
   const handleGenerate = () => {
-    fetch("http://localhost:5000/api/generate-sock", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ color, pattern }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("Сгенерировано:", data))
-      .catch((err) => console.error("Ошибка генерации:", err));
+    axios
+      .post("http://localhost:5000/api/еще_не_написано", { color, pattern })
+      .then((response) => {
+        console.log("Сгенерировано:", response.data);
+      })
+      .catch((error) => {
+        console.error("Ошибка генерации:", error);
+      });
   };
-
   return (
     <div className="sock-generator">
       <div className="sock-preview">
-        <img src="/white.png" alt="Носок" />
+        <img src="/socks/white.png" alt="Носок" />
       </div>
 
 
