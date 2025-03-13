@@ -1,26 +1,27 @@
 import React from 'react';
-import axios from "axios";
-import axiosInstance, { setAccessToken } from "../../api/axiosInstance";
+import axios from 'axios';
+import axiosInstance, { setAccessToken } from '../../api/axiosInstance';
+import { useNavigate } from 'react-router';
 
 
 import { Container, Form, Button, Card } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
-import './LoginForm.css'; 
+import './LoginForm.css';
 
-export default function LoginForm({setUser}) {
-
+export default function LoginForm({ setUser }) {
+  const navigate = useNavigate();
   const loginHandler = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
     if (!formData.email || !formData.password) {
-      return alert("Missing required fields");
+      return alert('Missing required fields');
     }
-    axiosInstance.post("/auth/login", formData).then((res) => {
-      setUser({ status: "logged", data: res.data.user });
+    axiosInstance.post('/auth/login', formData).then((res) => {
+      setUser({ status: 'logged', data: res.data.user });
       setAccessToken(res.data.accessToken);
+      navigate('/createsocks')
     });
   };
-
 
   return (
     <Container className="d-flex justify-content-center mt-5">
