@@ -5,6 +5,7 @@ import SignUpPage from "./pages/signUpPage/signUpPage"
 import LoginPage from "./pages/loginPage/loginPage";
 import FavoritePage  from "./pages/favoritePage/favoritePage";
 import CreateSockPage from "./pages/createSockPage/createSockPage";
+import CartPage from "./pages/cart/cartPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -33,16 +34,15 @@ function App() {
   }, []);
 return (
   <Routes>
-
-
   <Route path="/" element={<Layout logoutHandler={logoutHandler} user={user}/>}>
+  
   <Route path="/" element={<WelcomePage />} />
   <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
   <Route path="/login" element={<LoginPage setUser={setUser}/>} />
   <Route path="/createsocks" element={<CreateSockPage/>} />
   <Route path="/favorites" element={<FavoritePage/>} />
-
-
+  <Route path="/cart" element={<CartPage/>} />
+  
   </Route>
 
 
