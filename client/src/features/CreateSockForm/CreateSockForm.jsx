@@ -6,37 +6,40 @@ import "./CreateSockForm.css";
 export default function CreateSockForm() {
   const [color, setColor] = useState("white");
   const [pattern, setPattern] = useState("");
+  const [sockImage, setSockImage] = useState("/white.png");
 
-//--
 
   const handleGenerate = () => {
     axios
-      .post("http://localhost:5000/api/еще_не_написано", { color, pattern })
+      .post("/api/createsocks", { color, pattern })
       .then((response) => {
+        console.log({ color, pattern })
         console.log("Сгенерировано:", response.data);
+        setSockImage(response.data.image);
       })
       .catch((error) => {
+        console.log({ color, pattern })
         console.error("Ошибка генерации:", error);
       });
   };
+
   return (
     <div className="sock-generator">
       <div className="sock-preview">
-        <img src="/socks/white.png" alt="Носок" />
+      <img src={sockImage} alt="Носок" />
       </div>
-
 
       <div className="sock-options">
         <div className="option-card">
           <h3>Выбор цвета:</h3>
           <div className="buttons">
-            {["white", "black", "red", "purple"].map((col) => (
+            {["Белый", "Черный", "Красный", "Фиолетовый"].map((col) => (
               <button
                 key={col}
-                className={`option-btn ${col} ${color === col ? "selected" : ""}`}
+                className={`option-btn ${color === col ? "selected" : ""}`}
                 onClick={() => setColor(col)}
               >
-                {col === "white" ? "Белый" : col === "black" ? "Черный" : col === "red" ? "Красный" : "Фиолетовый"}
+                {col}
               </button>
             ))}
           </div>

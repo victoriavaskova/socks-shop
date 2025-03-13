@@ -1,7 +1,7 @@
 const socksRouter = require('express').Router();
 const { Socks }  = require('../../db/models/');
 
-socksRouter.post('/api/createsocks', async (req, res) => {
+socksRouter.post('/', async (req, res) => {
   try {
     const { color, pattern } = req.body;
 
