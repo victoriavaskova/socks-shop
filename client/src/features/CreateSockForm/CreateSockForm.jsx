@@ -7,6 +7,8 @@ export default function CreateSockForm() {
   const [color, setColor] = useState("white");
   const [pattern, setPattern] = useState("");
 
+//--
+
   const handleGenerate = () => {
     axios
       .post("http://localhost:5000/api/еще_не_написано", { color, pattern })
