@@ -10,22 +10,19 @@ export default function NavBar({logoutHandler, user}) {
     <nav className="navbar">
       
       <div className="navbar-left">
-        
-        <ul className="navbar-links">
-        <li onClick={logoutHandler}><Link to="/">ВЫХОД</Link></li> 
-          <li><Link to="/signup">РЕГИСТРАЦИЯ</Link></li>
-          <li><Link to="/login">ВХОД</Link></li>
-        </ul>
+      {user.status === "logged" ? `Привет ${user.data.name}!` : "Welcome Guest"}
       </div>
-<div>{user.status === "logged" ? `Привет ${user.data.name}` : "Guest"}</div>
+      
       <div className="navbar-logo">
         <Link to="/">
           <img src={logo} alt="Логотип" />
         </Link>
       </div>
 
-      <div className="navbar-right">
+      {user.status === "logged" ? (<><div className="navbar-right">
         <ul className="navbar-links">
+          
+          <li onClick={logoutHandler}><Link to="/">ВЫХОД</Link></li>
           <li><Link to="/favorites">
           ИЗБРАННОЕ  <FaHeart />
           </Link></li>
@@ -33,7 +30,11 @@ export default function NavBar({logoutHandler, user}) {
           КОРЗИНА <FaShoppingCart /> 
           </Link></li>
         </ul>
-      </div>
+      </div></>):(<ul className="navbar-links">
+          <li><Link to="/signup">РЕГИСТРАЦИЯ</Link></li>
+          <li><Link to="/login">ВХОД</Link></li>
+        </ul>)}
+      
     </nav>
   );
 }

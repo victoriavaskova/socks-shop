@@ -6,9 +6,10 @@ import { Container, Form, Button, Card } from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './SignUpForm.css'; // Подключаем стили
+import { useNavigate } from 'react-router';
 
 export default function SignUpForm({setUser}) {
-
+const navigate = useNavigate();
   const signUpHandler = (e) => {
     e.preventDefault();
     const formData = Object.fromEntries(new FormData(e.target));
@@ -20,6 +21,7 @@ export default function SignUpForm({setUser}) {
     axiosInstance.post("/auth/signup", formData).then((res) => {
       setUser({ status: "logged", data: res.data.user });
       setAccessToken(res.data.accessToken);
+      navigate('/createsocks');
     });
   };
 
@@ -80,9 +82,8 @@ export default function SignUpForm({setUser}) {
           </div>
 
           <div className="form-group text-center mt-4">
-            <Button className="btn-submit" type="submit">
-              Подтвердить
-            </Button>
+            <Button className="btn-submit" type="submit">Подтвердить
+              </Button>
           </div>
         </Form>
       </Card>

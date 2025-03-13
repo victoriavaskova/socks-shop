@@ -16,16 +16,21 @@
   height: 80px; 
   width: auto;
   display: block;
+
+  
 }
 
 
 .navbar-left {
   display: flex;
+  margin-left: 10px;
+  
 }
 
 
 .navbar-right {
   display: flex;
+  
 }
 
 
