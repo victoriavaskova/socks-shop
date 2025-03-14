@@ -42,7 +42,6 @@ return (
   <Route path="/createsocks" element={<CreateSockPage/>} />
   <Route path="/favorites" element={<FavoritePage/>} />
   <Route path="/cart" element={<CartPage/>} />
-  
   </Route>
 
 

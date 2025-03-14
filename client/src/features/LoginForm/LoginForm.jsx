@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import axiosInstance, { setAccessToken } from '../../api/axiosInstance';
 import { useNavigate } from 'react-router';
 
@@ -9,17 +8,26 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import './LoginForm.css';
 
 export default function LoginForm({ setUser }) {
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const loginHandler = (e) => {
     e.preventDefault();
+  setErrorMessage('');
     const formData = Object.fromEntries(new FormData(e.target));
     if (!formData.email || !formData.password) {
-      return alert('Missing required fields');
+      return setErrorMessage('Заполните все поля');
     }
     axiosInstance.post('/auth/login', formData).then((res) => {
       setUser({ status: 'logged', data: res.data.user });
       setAccessToken(res.data.accessToken);
       navigate('/createsocks')
+    })
+    .catch((error) => {
+      if (error.response && error.response.status === 400) {
+        setErrorMessage('Неверный email или пароль');
+      } else {
+        setErrorMessage('Ошибка сервера, попробуйте позже');
+      }
     });
   };
 
@@ -60,6 +68,7 @@ export default function LoginForm({ setUser }) {
               Подтвердить
             </Button>
           </div>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
         </Form>
       </Card>
     </Container>
