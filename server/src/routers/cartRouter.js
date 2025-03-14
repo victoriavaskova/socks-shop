@@ -1,6 +1,6 @@
 const cartRouter = require('express').Router();
 const { where } = require('sequelize');
-const { User, Socks, Cart } = require('../../db/models/');
+const { Cart, Order, Socks } = require('../../db/models/');
 const { verifyAccessToken, verifyRefreshToken } = require('../middlewares/VerifyTokens');
 const checkId = require('../middlewares/checkId');
 
@@ -57,5 +57,29 @@ cartRouter.delete("/:sockId", verifyAccessToken, async (req, res) => {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 })
+
+cartRouter.post('/checkout', verifyAccessToken, async (req, res) => {
+  try {
+    const userId = res.locals.user.id;
+
+    const cartItems = await Cart.findAll({ where: { userId } });
+
+    if (!cartItems.length) {
+      return res.status(400).json({ error: "Корзина пуста" });
+    }
+
+    const order = await Order.create({ userId });
+
+    await Cart.destroy({ where: { userId } });
+
+    res.json({ message: "Заказ оформлен!", order });
+  } catch (error) {
+    console.error("Ошибка при оформлении заказа:", error);
+    res.status(500).json({ error: "Ошибка сервера" });
+  }
+});
+
+module.exports = cartRouter;
+
 
 module.exports = cartRouter;
