@@ -1,6 +1,6 @@
 const socksRouter = require('express').Router();
-const { User, Socks, Cart }  = require('../../db/models/');
-const { verifyAccessToken, verifyRefreshToken }  = require('../middlewares/VerifyTokens');
+const { Favorites, Socks, Cart }  = require('../../db/models/');
+const { verifyAccessToken }  = require('../middlewares/VerifyTokens');
 
 socksRouter.post('/', async (req, res) => {
   try {
@@ -38,6 +38,24 @@ socksRouter.post('/addCart', verifyAccessToken, async (req, res) => {
     res.json({ message: 'Носок добавлен в корзину', cartItem: newCartItem });
   } catch (error) {
     console.error('Ошибка при добавлении в корзину:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+socksRouter.post('/addFav', verifyAccessToken, async (req, res) => {
+  try {
+    const userId = res.locals.user.id; 
+    const { sockId } = req.body; 
+
+    if (!sockId) {
+      return res.status(400).json({ error: 'Не указан sockId' });
+    }
+
+    const newCartItem = await Favorites.create({ userId, sockId });
+
+    res.json({ message: 'Носок добавлен в избранное', cartItem: newCartItem });
+  } catch (error) {
+    console.error('Ошибка при добавлении в избранное:', error);
     res.status(500).json({ error: 'Ошибка сервера' });
   }
 });
