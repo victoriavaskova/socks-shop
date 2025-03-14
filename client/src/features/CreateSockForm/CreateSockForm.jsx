@@ -2,26 +2,45 @@ import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import axios from "axios";
 import "./CreateSockForm.css";
+import axiosInstance from "../../shared/lib/axiosinstance"
 
 export default function CreateSockForm() {
-  const [color, setColor] = useState("white");
+  const [color, setColor] = useState("Белый");
   const [pattern, setPattern] = useState("");
   const [sockImage, setSockImage] = useState("/white.png");
+  const [sockId, setSockId] = useState(null);
 
 
   const handleGenerate = () => {
-    axios
-      .post("/api/createsocks", { color, pattern })
+    axiosInstance
+      .post("/createsocks", { color, pattern })
       .then((response) => {
         console.log({ color, pattern })
         console.log("Сгенерировано:", response.data);
         setSockImage(response.data.image);
+        setSockId(response.data.sockId);
       })
       .catch((error) => {
         console.log({ color, pattern })
         console.error("Ошибка генерации:", error);
       });
   };
+
+  const handleAddToCart = () => {
+    if (!sockId) {
+      console.log("Сначала сгенерируйте носок!");
+      return;
+    }
+    axiosInstance
+    .post("/createsocks/addCart", { sockId }, { withCredentials: true })
+    .then(() => {
+      console.log("Носок добавлен в корзину!");
+    })
+    .catch((error) => {
+      console.error("Ошибка при добавлении в корзину:", error);
+    });
+};
+
 
   return (
     <div className="sock-generator">
@@ -66,7 +85,7 @@ export default function CreateSockForm() {
           <button className="generate-btn" onClick={handleGenerate}>
             Сгенерировать
           </button>
-          <button className="cart-btn">
+          <button className="cart-btn" onClick={handleAddToCart}>
             <FaShoppingCart /> Добавить в корзину
           </button>
           <button className="favorite-btn">
