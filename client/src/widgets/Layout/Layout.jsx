@@ -9,7 +9,7 @@ export default function Layout({logoutHandler, user}) {
     <>
           <NavBar logoutHandler={logoutHandler} user={user}/>
           <Outlet />
-          <Footer />
+          {/* <Footer /> */}
     </>
   );
 }

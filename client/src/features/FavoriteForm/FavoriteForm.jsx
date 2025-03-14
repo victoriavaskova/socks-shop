@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../../shared/lib/axiosinstance";
-import  '../CartForm/cartStyles.css' 
+import './favoritePage.css';
 export default function FavoriteForm(){
   const [socks, setSocks] = useState([])
   
@@ -37,7 +37,7 @@ export default function FavoriteForm(){
     <>
     <div className="cart-container">
       <div className="header">
-        <h1>Корзина</h1>
+        <h1>Избранное</h1>
       </div>
       {socks.map((el) => (
         <div key={el.id} className='content'>
@@ -59,8 +59,7 @@ export default function FavoriteForm(){
         
         )
       )}
-          <p>В избранном пока ничего нет</p>
-          <button onClick={handleAddToCart}> Добавить в корзину</button>
+          <button className="order-button" onClick={handleAddToCart}> Добавить в корзину</button>
       </div>
       </>
   );
