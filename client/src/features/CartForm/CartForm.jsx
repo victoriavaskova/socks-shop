@@ -53,7 +53,24 @@ const CartForm = () => {
   } catch (error) {
     console.log(error);
     alert("Что-то пошло не так");
-  }}
+  }
+};
+
+const orderHandler = async () => {
+  if (socks.length === 0) {
+    return alert("Корзина пуста!");
+  }
+
+  try {
+    await axiosInstance.post('/cart/checkout');
+    setSocks([]); 
+    setQuantities({});
+    alert("Заказ оформлен!");
+  } catch (error) {
+    console.log(error);
+    alert("Ошибка при оформлении заказа");
+  }
+};
 
   return (
     <>
@@ -85,7 +102,7 @@ const CartForm = () => {
           </div>
         ))}
         <div className="total">Итоговая стоимость: {totalPrice}$</div>
-        <button className="order-button">Заказать</button>
+        <button className="order-button" onClick={orderHandler}>Заказать</button>
       </div>
     </>
   );
