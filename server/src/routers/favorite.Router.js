@@ -1,6 +1,7 @@
 const favoriteRouter = require('express').Router();
-const { User, Socks, Favorite} = require('../../db/models');
+const { User, Socks, Favorites} = require('../../db/models');
 const {verifyAccessToken, verifyRefreshToken } = require('../middlewares/VerifyTokens')
+
 
 favoriteRouter.get('/', verifyAccessToken, async (req, res) => {
     try {
@@ -10,7 +11,7 @@ favoriteRouter.get('/', verifyAccessToken, async (req, res) => {
         return res.status(400).json({ error: 'Не указан userId' });
       }
   
-      const allFavorites = await Favorite.findAll({
+      const allFavorites = await Favorites.findAll({
         where: { userId },
         include: [{model: Socks}],
       })

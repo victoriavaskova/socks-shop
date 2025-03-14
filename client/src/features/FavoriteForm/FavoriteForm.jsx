@@ -4,16 +4,17 @@ import  '../CartForm/cartStyles.css'
 export default function FavoriteForm(){
   const [socks, setSocks] = useState([])
   
-  useEffect(() =>{
+  useEffect(() => {
     try {
-      axiosInstance("/favorites").then((res) => {
-        setFavorites(res.data.favoriteItem);
+      axiosInstance('/favorites').then((res) => {
+        const socksData = res.data.allFavorites;
+        setSocks(socksData);
+        console.log(socksData, socks)
       });
     } catch (error) {
       console.log(error);
     }
-  }, [])
-
+  }, []);
   // const handleRemoveFromFavorites = async (sockId) => {
   //   try {
   //     await axiosInstance.delete(`/favorites/${sockId}`); // Удаление из избранного
@@ -48,13 +49,10 @@ export default function FavoriteForm(){
           <p>Узор: {el.Sock.pattern}</p>
           </div>
 
-          <div className="counter">
-          <button onClick={handleDecrement}>-</button>
-          <span>{quantity}</span>
-          <button onClick={handleIncrement}>+</button>
+          <div className="counter">    
         </div>
         <div className="price-info">
-          <div className="price">Цена: ${pricePerItem}</div>
+          <div className="price">Цена: 100$</div>
         </div>
 
         </div>
