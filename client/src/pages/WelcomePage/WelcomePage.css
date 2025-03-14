@@ -1,18 +1,24 @@
+
+
 .welcome-container {
     max-width: 700px;
     margin: 50px auto;
     text-align: center;
     font-family: 'Arial', sans-serif;
     color: #333;
+    margin-bottom: 337px;
   }
   
   h1 {
-    font-size: 28px;
+    font-size: 40px;
     color: #000;
+    text-shadow: 2px 2px 2px rgb(117, 117, 117);
+    
+
   }
   
   p {
-    font-size: 16px;
+    font-size: 22px;
     line-height: 1.6;
     margin-bottom: 20px;
   }

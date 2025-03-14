@@ -36,7 +36,8 @@ return (
   <Routes>
   <Route path="/" element={<Layout logoutHandler={logoutHandler} user={user}/>}>
   
-  <Route path="/" element={<WelcomePage />} />
+  <Route path="/" element={<WelcomePage user={user} />} />
+  
   <Route path="/signup" element={<SignUpPage setUser={setUser}/>} />
   <Route path="/login" element={<LoginPage setUser={setUser}/>} />
   <Route path="/createsocks" element={<CreateSockPage/>} />
