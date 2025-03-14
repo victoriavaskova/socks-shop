@@ -39,6 +39,7 @@
   }
   
   .note {
+    font-size: 30px;
     margin-top: 20px;
     font-size: 14px;
   }
@@ -51,4 +52,10 @@
   
   .note a:hover {
     color: #444;
+  }
+
+  .counter button:active, 
+  .button:active {
+      transform: scale(0.95); /* Уменьшает кнопку при нажатии */
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2); /* Эффект вдавливания */
   }

@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 15px 60px;
   background-color: #000;
   color: #fff;
   font-family: 'Arial', sans-serif;
@@ -25,13 +25,13 @@
 .navbar-left {
   display: flex;
   margin-left: 10px;
-  
+  padding: 15px 60px;
 }
 
 
 .navbar-right {
   display: flex;
-  
+  padding-right: 30px;
 }
 
 
@@ -40,7 +40,7 @@
   display: flex;
   gap: 20px;
   margin: 0;
-  padding: 0;
+  padding: 0 20px;
 }
 
 .navbar-links li {
