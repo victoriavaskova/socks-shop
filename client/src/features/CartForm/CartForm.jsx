@@ -22,7 +22,6 @@ const CartForm = () => {
       <div className="header">
         <h1>Корзина</h1>
       </div>
-
       <div className="content">
         <div className="image-container">
           <img src="/public/red.png" alt="sock_Img" />
@@ -34,13 +33,13 @@ const CartForm = () => {
         </div>
         <div className="price-info">
           <div className="price">Цена: ${pricePerItem}</div>
-          <div className="total">ИТОГО: ${totalPrice}</div>
         </div>
       </div>
-
       <div className="order-button-div">
-        <button className="order-button">Заказать</button>
+        
       </div>
+      <div className="total">ИТОГО: ${totalPrice}</div>
+      <button className="order-button">Заказать</button>
     </div>
     
   );
