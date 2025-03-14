@@ -1,18 +1,24 @@
+
+
 .welcome-container {
     max-width: 700px;
     margin: 50px auto;
     text-align: center;
     font-family: 'Arial', sans-serif;
     color: #333;
+    margin-bottom: 337px;
   }
   
   h1 {
-    font-size: 28px;
+    font-size: 40px;
     color: #000;
+    text-shadow: 2px 2px 2px rgb(117, 117, 117);
+    
+
   }
   
   p {
-    font-size: 16px;
+    font-size: 22px;
     line-height: 1.6;
     margin-bottom: 20px;
   }
@@ -33,6 +39,7 @@
   }
   
   .note {
+    font-size: 30px;
     margin-top: 20px;
     font-size: 14px;
   }
@@ -45,4 +52,10 @@
   
   .note a:hover {
     color: #444;
+  }
+
+  .counter button:active, 
+  .button:active {
+      transform: scale(0.95); /* Уменьшает кнопку при нажатии */
+      box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.2); /* Эффект вдавливания */
   }

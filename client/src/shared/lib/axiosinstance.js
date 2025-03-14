@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const axiosInstance = axios.create({
-  baseURL: `${import.meta.env.VITE_API}`, //? - все запросы летят на /api в .env!!- куда стучимся
+const axiosInstance = axios.create({
+  baseURL: `/api`, //? - все запросы летят на /api в .env!!- куда стучимся
   headers: { 'Content-Type': 'application/json' }, //? - все запросы летят с указанием типа контента
   withCredentials: true, //? - все запросы включают куки
 });
@@ -32,7 +32,7 @@ axiosInstance.interceptors.response.use(
     //?  проверяем статус и проверка на первичность запроса, если попали внутрь, значит токен протух и нам нужна новая пара
     if (error.response.status === 403 && !prevRequest.sent) {
       //? делаем запрос на пару токенов
-      const response = await axiosInstance.get('/auth/refreshTokens');
+      const response = await axiosInstance.get('/tokens/refresh');
       //? достаем токен из ответа
       setAccessToken(response.data.accessToken);
       //? и создаем новый ключ и sent для проверки первичности
@@ -45,3 +45,5 @@ axiosInstance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default axiosInstance;

@@ -6,20 +6,20 @@ module.exports = {
     const socks = [
       {
         color: 'Черный',
-        pattern: 'без принта',
-        image: '/black.png'      },
+        pattern: '',
+        image: '/black.png'},
       {
         color: 'Красный',
-        pattern: 'без принта',
+        pattern: '',
         image: '/red.png'},
       {
         color: 'Белый',
-        pattern: 'без принта',
+        pattern: '',
         image: '/white.png'    
       },
       {
         color: 'Фиолетовый',
-        pattern: 'без принта',
+        pattern: '',
         image: '/purple.png'      
       },
         {
@@ -61,6 +61,46 @@ module.exports = {
           color: 'Фиолетовый',
           pattern: 'Полосы',
           image: '/purple_line.png'
+        },
+        {
+          color: 'Черный',
+          pattern: 'Кораблики',
+          image: '/black_boats.png'
+        },
+        {
+          color: 'Красный',
+          pattern: 'Кораблики',
+          image: '/red_boats.png'
+        },
+        {
+          color: 'Белый',
+          pattern: 'Кораблики',
+          image: '/white_boats.png'
+        },
+        {
+          color: 'Фиолетовый',
+          pattern: 'Кораблики',
+          image: '/purple_boats.png'
+        },
+        {
+          color: 'Черный',
+          pattern: 'Облака',
+          image: '/black_clouds.png'
+        },
+        {
+          color: 'Красный',
+          pattern: 'Облака',
+          image: '/red_clouds.png'
+        },
+        {
+          color: 'Белый',
+          pattern: 'Облака',
+          image: '/white_clouds.png'
+        },
+        {
+          color: 'Фиолетовый',
+          pattern: 'Облака',
+          image: '/purple_clouds.png'
         }
     ];
     await queryInterface.bulkInsert('Socks', socks, {});

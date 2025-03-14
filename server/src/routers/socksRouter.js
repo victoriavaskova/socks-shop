@@ -1,7 +1,8 @@
 const socksRouter = require('express').Router();
-const { Socks }  = require('../../db/models/');
+const { Favorites, Socks, Cart }  = require('../../db/models/');
+const { verifyAccessToken }  = require('../middlewares/VerifyTokens');
 
-socksRouter.post('/api/createsocks', async (req, res) => {
+socksRouter.post('/', async (req, res) => {
   try {
     const { color, pattern } = req.body;
 
@@ -15,12 +16,49 @@ socksRouter.post('/api/createsocks', async (req, res) => {
       return res.status(404).json({ error: "Такой модели носков нет в базе" });
     }
 
-    res.json({ image: sock.image });
+    res.json({ image: sock.image, sockId: sock.id, });
 
   } catch (error) {
     console.error("Ошибка при получении носков:", error);
     res.status(500).json({ error: "Внутренняя ошибка сервера" });
   }
 });
+
+socksRouter.post('/addCart', verifyAccessToken, async (req, res) => {
+  try {
+    const userId = res.locals.user.id; 
+    const { sockId } = req.body; 
+
+    if (!sockId) {
+      return res.status(400).json({ error: 'Не указан sockId' });
+    }
+
+    const newCartItem = await Cart.create({ userId, sockId });
+
+    res.json({ message: 'Носок добавлен в корзину', cartItem: newCartItem });
+  } catch (error) {
+    console.error('Ошибка при добавлении в корзину:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+socksRouter.post('/addFav', verifyAccessToken, async (req, res) => {
+  try {
+    const userId = res.locals.user.id; 
+    const { sockId } = req.body; 
+
+    if (!sockId) {
+      return res.status(400).json({ error: 'Не указан sockId' });
+    }
+
+    const newCartItem = await Favorites.create({ userId, sockId });
+
+    res.json({ message: 'Носок добавлен в избранное', cartItem: newCartItem });
+  } catch (error) {
+    console.error('Ошибка при добавлении в избранное:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
 
 module.exports = socksRouter;
