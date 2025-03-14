@@ -65,22 +65,22 @@ module.exports = {
         {
           color: 'Черный',
           pattern: 'Кораблики',
-          image: '/black_line.png'
+          image: '/black_boats.png'
         },
         {
           color: 'Красный',
           pattern: 'Кораблики',
-          image: '/red_line.png'
+          image: '/red_boats.png'
         },
         {
           color: 'Белый',
           pattern: 'Кораблики',
-          image: '/white_line.png'
+          image: '/white_boats.png'
         },
         {
           color: 'Фиолетовый',
           pattern: 'Кораблики',
-          image: '/purple_line.png'
+          image: '/purple_boats.png'
         },
         {
           color: 'Черный',
