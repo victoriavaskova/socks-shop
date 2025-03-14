@@ -2,13 +2,14 @@ import { useState } from "react";
 import { FaHeart, FaShoppingCart } from "react-icons/fa";
 import axios from "axios";
 import "./CreateSockForm.css";
-import axiosInstance from "../../shared/lib/axiosinstance"
+import axiosInstance from "../../shared/lib/axiosinstance";
 
 export default function CreateSockForm() {
   const [color, setColor] = useState("Белый");
   const [pattern, setPattern] = useState("");
   const [sockImage, setSockImage] = useState("/white.png");
   const [sockId, setSockId] = useState(null);
+  const [message, setMessage] = useState("");
 
 
   const handleGenerate = () => {
@@ -28,17 +29,32 @@ export default function CreateSockForm() {
 
   const handleAddToCart = () => {
     if (!sockId) {
-      console.log("Сначала сгенерируйте носок!");
+      setMessage("Сначала сгенерируйте носок!");
       return;
     }
     axiosInstance
     .post("/createsocks/addCart", { sockId }, { withCredentials: true })
     .then(() => {
-      console.log("Носок добавлен в корзину!");
+      setMessage("Товар добавлен в корзину.");
     })
     .catch((error) => {
       console.error("Ошибка при добавлении в корзину:", error);
     });
+};
+
+const handleAddToFav = () => {
+  if (!sockId) {
+    setMessage("Сначала сгенерируйте носок!");
+    return;
+  }
+  axiosInstance
+  .post("/createsocks/addFav", { sockId }, { withCredentials: true })
+  .then(() => {
+    setMessage("Товар добавлен в избранное.");
+  })
+  .catch((error) => {
+    console.error("Ошибка при добавлении в избранное:", error);
+  });
 };
 
 
@@ -52,15 +68,15 @@ export default function CreateSockForm() {
         <div className="option-card">
           <h3>Выбор цвета:</h3>
           <div className="buttons">
-            {["Белый", "Черный", "Красный", "Фиолетовый"].map((col) => (
-              <button
-                key={col}
-                className={`option-btn ${color === col ? "selected" : ""}`}
-                onClick={() => setColor(col)}
-              >
-                {col}
-              </button>
-            ))}
+          {["Белый", "Черный", "Красный", "Фиолетовый"].map((col) => (
+          <button
+          key={col}
+          className={`option-btn ${col.toLowerCase()} ${color === col ? "selected" : ""}`}
+          onClick={() => setColor(col)}
+          >
+          {col}
+         </button>
+         ))}
           </div>
         </div>
 
@@ -88,9 +104,10 @@ export default function CreateSockForm() {
           <button className="cart-btn" onClick={handleAddToCart}>
             <FaShoppingCart /> Добавить в корзину
           </button>
-          <button className="favorite-btn">
+          <button className="favorite-btn" onClick={handleAddToFav}>
             <FaHeart /> Добавить в избранное
           </button>
+          {message && <p className="message">{message}</p>}
         </div>
       </div>
     </div>

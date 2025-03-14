@@ -53,10 +53,10 @@
   }
   
   /* Цветные кнопки */
-  .option-btn.white { background: white; color: black; }
-  .option-btn.black { background: black; color: white; }
-  .option-btn.red { background: red; color: white; }
-  .option-btn.purple { background: purple; color: white; }
+  .option-btn.белый { background: white; color: black; }
+  .option-btn.черный { background: black; color: white; }
+  .option-btn.красный { background: red; color: white; }
+  .option-btn.фиолетовый { background: purple; color: white; }
   
   /* Выбранная кнопка */
   .option-btn.selected {
@@ -109,3 +109,11 @@
     background: #454545;
   }
   
+  .message {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    justify-content: center;
+  }
