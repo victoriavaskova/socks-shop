@@ -36,6 +36,9 @@ export default function CreateSockForm() {
     .post("/createsocks/addCart", { sockId }, { withCredentials: true })
     .then(() => {
       setMessage("Товар добавлен в корзину.");
+      setTimeout(() => {
+       setMessage("");
+      }, 2000);
     })
     .catch((error) => {
       console.error("Ошибка при добавлении в корзину:", error);
@@ -51,6 +54,9 @@ const handleAddToFav = () => {
   .post("/createsocks/addFav", { sockId }, { withCredentials: true })
   .then(() => {
     setMessage("Товар добавлен в избранное.");
+    setTimeout(() => {
+      setMessage("");
+     }, 2000);
   })
   .catch((error) => {
     console.error("Ошибка при добавлении в избранное:", error);
