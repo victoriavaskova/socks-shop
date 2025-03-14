@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     const testCart = [
-      { userId: '1', sockId:'1', quantity: '2' },
+      { userId: '1', sockId:'1' },
     ];
     await queryInterface.bulkInsert('Favorites', testCart, {});
   },
